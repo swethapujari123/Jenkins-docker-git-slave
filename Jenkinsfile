@@ -7,6 +7,27 @@ pipeline {
             agent { label 'slave1' }
 
             steps {
+
+                sh '''
+                echo "===== USER ====="
+                whoami
+
+                echo "===== ID ====="
+                id
+
+                echo "===== WORKSPACE ====="
+                pwd
+
+                echo "===== DOCKER SOCKET ====="
+                ls -l /var/run/docker.sock
+
+                echo "===== DOCKER VERSION ====="
+                docker --version
+
+                echo "===== DOCKER PS ====="
+                docker ps
+                '''
+
                 git branch: 'q1',
                     url: 'https://github.com/swethapujari123/Jenkins-docker-git-slave.git'
 
@@ -20,6 +41,14 @@ pipeline {
             agent { label 'slave2' }
 
             steps {
+
+                sh '''
+                echo "===== USER ====="
+                whoami
+                id
+                docker ps
+                '''
+
                 git branch: 'q2',
                     url: 'https://github.com/swethapujari123/Jenkins-docker-git-slave.git'
 
@@ -33,6 +62,14 @@ pipeline {
             agent { label 'slave3' }
 
             steps {
+
+                sh '''
+                echo "===== USER ====="
+                whoami
+                id
+                docker ps
+                '''
+
                 git branch: 'q3',
                     url: 'https://github.com/swethapujari123/Jenkins-docker-git-slave.git'
 
@@ -41,6 +78,5 @@ pipeline {
                 '''
             }
         }
-
     }
 }

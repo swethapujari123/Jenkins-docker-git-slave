@@ -9,6 +9,7 @@ pipeline {
             steps {
                 git branch: 'q1',
                     url: 'https://github.com/swethapujari123/Jenkins-docker-git-slave.git'
+
                 sh '''
                 docker cp index.html webserver:/usr/local/apache2/htdocs/index.html
                 '''
@@ -28,4 +29,18 @@ pipeline {
             }
         }
 
-    
+        stage('Deploy Q3 to Slave3') {
+            agent { label 'slave3' }
+
+            steps {
+                git branch: 'q3',
+                    url: 'https://github.com/swethapujari123/Jenkins-docker-git-slave.git'
+
+                sh '''
+                docker cp index.html webserver:/usr/local/apache2/htdocs/index.html
+                '''
+            }
+        }
+
+    }
+}

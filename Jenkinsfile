@@ -8,8 +8,7 @@ pipeline {
 
             steps {
                 git branch: 'q1',
-                    url: 'https://github.com/swethapujari123/website.git'
-
+                    url: 'https://github.com/swethapujari123/Jenkins-docker-git-slave.git'
                 sh '''
                 docker cp index.html webserver:/usr/local/apache2/htdocs/index.html
                 '''
@@ -21,7 +20,7 @@ pipeline {
 
             steps {
                 git branch: 'q2',
-                    url: 'https://github.com/swethapujari123/website.git'
+                    url: 'https://github.com/swethapujari123/Jenkins-docker-git-slave.git'
 
                 sh '''
                 docker cp index.html webserver:/usr/local/apache2/htdocs/index.html
